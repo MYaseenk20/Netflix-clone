@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +27,7 @@ SECRET_KEY = '+3j@%*fp*$#r@fpteci%+j&6ci*rqwlzdck18qkgid6s%#2q44'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cnetflix.herokuapp.com']
 
 
 # Application definition
@@ -129,3 +131,4 @@ STATICFILES_DIRS=[
 ]
 MEDIA_ROOT=os.path.join(BASE_DIR,'static/image')
 
+django_heroku.settings(locals())

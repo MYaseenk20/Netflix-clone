@@ -1,0 +1,86 @@
+{% extends 'netflix/base.html' %}
+{% load static %}
+
+{% block content %}
+		<main class="content">
+			<div class="single">
+
+				<section class="trailer">
+					<h3>Trailer</h3>
+					<div class="trailer_frame">
+						<iframe width="560" height="315" src="{{object.movie_trailer}}" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</section>
+
+				<section class="movie">
+					<img src="images/9.jpg">
+					<ul>
+						<li>{{object}}</li>
+						<li>{{object.description}}</li>
+						<li><a href="genre.html">{{object.category}}</a>
+						<li><a href="cast.html">Gary Oldman</a>, <a href="cast.html">Asa Butterfield</a></li>
+						<li>{{object.view_count}}</li>
+					</ul>
+				</section>
+				<section class="links">
+					<h3>Links</h3>
+					<ul class="dlinks">
+						<li><a>Download</a></li>
+						{% for link in links %}
+							{% if link.type == 'D' %}
+						<li><a href="{{link.link}}">link</a></li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+					<ul class="wlinks">
+						<li><a>Watch</a></li>
+						{% for link in links %}
+							{% if link.type == 'W' %}
+						<li><a href="{{link.link}}">link</a></li>
+							{% endif %}
+						{% endfor %}
+				</section>
+
+				<section class="related">
+					<h3>Related movies</h3>
+					{% for movie in related_movies %}
+					<div class="relatemovie">
+						<a href="{% url 'movies:movie_list' movie.slug %}"><img src="{{movie.image.url}}"></a>
+						<a href="{% url 'movies:movie_list' movie.slug %}"><span class="relatedname">{{movie.title}}</span></a>
+					</div>
+					{% endfor %}
+
+
+				</section>
+
+				<section class="comments">
+					<h3>Comments</h3>
+				</section>
+			</div>
+		</main>
+
+		<footer class="footer">
+			<div class="copyright"><p>Copyright &copy 2017 www.focusoncode.com</p></div>
+			<div class="footermenu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="terms.html">Terms and conditions</a></li>
+				</ul>
+			</div>
+			<div class="tags">
+				<ul>
+					<li>Watch Free Movies Trailers</li>
+					<li>Movie Trailers</li>
+					<li>English Subtitled Movies Trailers</li>
+					<li>Latest Movies Trailers</li>
+					<li>New Movies Trailers</li>
+
+				</ul>
+			</div>
+
+		</footer>
+
+	</div>
+
+{% endblock content %}

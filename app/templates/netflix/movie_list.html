@@ -1,0 +1,61 @@
+{% extends 'netflix/base.html' %}
+{% load static %}
+
+{% block content %}
+		<div class="homeslider">
+			<div class="swiper-container">
+
+				<div class="swiper-wrapper">
+					{% for movie in object_list %}
+					<div class="swiper-slide">
+						<img src="{{movie.image.url}}">
+						<div class="caption">
+							<div class="captioninside">
+								<h3>{{movie.title}}</h3>
+								<p>{{movie.description}}</p>
+								<a href="single.html" class="playbutton">Play</a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+				<!-- Add Pagination -->
+				<div class="swier-pagination"></div>
+			</div>
+		</div>
+
+		<main class="content">
+			<section class="panel">
+				{% if movie_category %}
+					<h2>{{movie_category}}</h2>
+				{% endif %}
+				{% if movie_language %}
+					<h2>{{movie_language}}</h2>
+				{% endif %}
+				<div class="recentslider">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							{% if object_list %}
+
+							{% for movie in object_list %}
+								<div class="swiper-slide"><a href="{% url 'movies:movie_list' movie.slug %}"><img src="{{movie.image.url}}"><h3 class="hometitle">{{movie.title}}</h3></a></div>
+							{% endfor %}
+							{% else %}
+												<h2>Not avaiable  </h2>
+
+							{% endif %}
+						</div>
+						<div class="nextdirection recent-next"><img src="{% static 'img/right-arrow.svg' %}"> </div>
+						<div class="leftdirection recent-prev"><img src="{% static 'img/left-arrow.svg' %}"> </div>
+					</div>
+				</div>
+			</section>
+
+						<div class="nextdirection recent-next"><img src="{% static 'img/right-arrow.svg' %}"> </div>
+						<div class="leftdirection recent-prev"><img src="{% static 'img/left-arrow.svg' %}"> </div>
+						<!-- Add Pagination -->
+					</div>
+				</div>
+			</section>
+		</main>
+{% endblock content %}

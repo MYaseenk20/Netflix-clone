@@ -27,7 +27,7 @@ SECRET_KEY = '+3j@%*fp*$#r@fpteci%+j&6ci*rqwlzdck18qkgid6s%#2q44'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cnetflix.herokuapp.com']
+ALLOWED_HOSTS = ['nnetflix.herokuapp.com']
 
 
 # Application definition
